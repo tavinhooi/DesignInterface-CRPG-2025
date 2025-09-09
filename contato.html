@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locadora IFPR - Filiais</title>
+    <title>Locadora IFPR - Contato</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -22,21 +22,19 @@
 
     <!-- Conteúdo principal -->
     <main>
-        <h1>Nossas Filiais</h1>
-        <div class="filiais">
-            <div class="filial">
-                <h2>Filial Curitiba</h2>
-                <p>Rua das Flores, 123 - Centro</p>
-            </div>
-            <div class="filial">
-                <h2>Filial Ponta Grossa</h2>
-                <p>Avenida Vicente Machado, 456 - Centro</p>
-            </div>
-            <div class="filial">
-                <h2>Filial Telêmaco Borba</h2>
-                <p>Rua Paraná, 789 - Centro</p>
-            </div>
-        </div>
+        <h1>Entre em Contato</h1>
+        <form class="contato-form">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem"></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
     </main>
 
     <!-- Rodapé -->
