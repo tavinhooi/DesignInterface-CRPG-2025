@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     echo "<p>Dados enviados para a planilha com sucesso!</p>";
     echo "<pre>" . htmlspecialchars($response) . "</pre>";
-} else {
-    echo "<p>Nenhum dado foi enviado.</p>";
-}
+    } else {
+        echo "<p>Nenhum dado foi enviado.</p>";
+    }
+?>
