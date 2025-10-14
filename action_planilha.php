@@ -2,7 +2,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // URL do Apps Script
-    $url = "https://script.google.com/macros/s/AKfycbwFZGV6WEhv7J4-kNkRd9QL-LTM8jZfNgRqzNaLzKJJZR0HIVo2VoE9nHw1UHIOo9yR/exec";
+    $url = "https://script.google.com/macros/s/AKfycbwc7IDvkDw-6ZHa05uholmsnGNcLhypPUc66PD8RtcJULh4yBHcZNBeKkcENT-gAb1iCA/exec";
 
     // Dados do formulário
     $data = [
