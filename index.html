@@ -21,23 +21,62 @@
         </nav>
     </header>
 
-    <!-- Conteúdo principal -->
     <main>
         <h1>Bem-vindo à Locadora de Veículos</h1>
         <p>Encontre o carro ideal para sua viagem, trabalho ou lazer.</p>
-
-        <div class="carros">
-            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60"
-                alt="Carro esportivo vermelho">
-
-            <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60"
-                alt="SUV preto">
-
-            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60"
-                alt="Carro branco">
-
+      
+        <div id="conteudo" class="conteudo-scroll">
+          <p>Carregando conteúdo...</p>
         </div>
-    </main>
+      </main>
+      
+      <script>
+      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwKRgyC5MtrxTGLVpRAsVx2eVidt0kF-1yDMjpmNgxltBuj6uR5Ow12wAaSlaKPBmRx/exec"; // substitua pela URL do seu Apps Script
+      
+      async function carregarConteudo() {
+        const container = document.getElementById('conteudo');
+        container.innerHTML = "<p>Carregando conteúdo...</p>";
+      
+        try {
+          const res = await fetch(SCRIPT_URL);
+          const dados = await res.json();
+          container.innerHTML = '';
+      
+          dados.forEach(item => {
+            const bloco = document.createElement('div');
+            bloco.className = 'bloco-item';
+      
+            const titulo = document.createElement('h2');
+            titulo.textContent = item.Título || '';
+            bloco.appendChild(titulo);
+      
+            const descricao = document.createElement('p');
+            descricao.textContent = item.Descrição || '';
+            bloco.appendChild(descricao);
+      
+            if (item.Url && item.Url.startsWith('http')) {
+              if (item.Url.match(/\.(jpg|jpeg|png|gif|webp)$/i) || item.Url.includes('unsplash')) {
+                const img = document.createElement('img');
+                img.src = item.Url;
+                img.alt = item.Título || 'Imagem';
+                bloco.appendChild(img);
+              } else {
+                const link = document.createElement('a');
+                link.href = item.Url;
+                link.textContent = 'Ver mais';
+                bloco.appendChild(link);
+              }
+            }
+      
+            container.appendChild(bloco);
+          });
+        } catch (err) {
+          container.innerHTML = "<p>Erro ao carregar dados: " + err.message + "</p>";
+        }
+      }
+      
+      carregarConteudo();
+      </script>
 
     <!-- Rodapé -->
     <footer>
