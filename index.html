@@ -47,18 +47,18 @@
             bloco.className = 'bloco-item';
       
             const titulo = document.createElement('h2');
-            titulo.textContent = item.Título || '';
+            titulo.textContent = item.Titulo || '';
             bloco.appendChild(titulo);
       
             const descricao = document.createElement('p');
-            descricao.textContent = item.Descrição || '';
+            descricao.textContent = item.Descricao || '';
             bloco.appendChild(descricao);
       
             if (item.Url && item.Url.startsWith('http')) {
               if (item.Url.match(/\.(jpg|jpeg|png|gif|webp)$/i) || item.Url.includes('unsplash')) {
                 const img = document.createElement('img');
                 img.src = item.Url;
-                img.alt = item.Título || 'Imagem';
+                img.alt = item.Titulo || 'Imagem';
                 bloco.appendChild(img);
               } else {
                 const link = document.createElement('a');
