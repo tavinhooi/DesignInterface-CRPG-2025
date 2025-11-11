@@ -1,19 +1,21 @@
-                            link.href = item.Url;
-                            link.textContent = 'Ver mais';
-                            link.target = "_blank"; // Abre em nova aba
-                            bloco.appendChild(link);
-                        }
-                    }
-                    container.appendChild(bloco);
-                });
-            } catch (err) {
-                container.innerHTML = `<p>Erro ao carregar dados: ${err.message}</p>`;
-                console.error('Erro detalhado:', err);
-            }
-        }
-        // Carrega o conteúdo ao carregar a página
-        window.addEventListener('load', carregarConteudo);
-    </script>
+    img.alt = item.Título || 'Imagem';
+    bloco.appendChild(img);
+  }
+  else {
+    const link = document.createElement('a');
+    link.href = item.Url;
+    link.textContent = 'Ver mais';
+    bloco.appendChild(link);
+  }
+}
+      container.appendChild(bloco);
+    });
+  } catch (err) {
+    container.innerHTML = "<p>Erro ao carregar dados: " + err.message + "</p>";
+  }
+}
+carregarConteudo();
+</script>
     <!-- Rodapé -->
     <footer>
         <p>&copy; 2025 Morangos IFPR - Cade u morangoh</p>
