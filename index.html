@@ -31,12 +31,9 @@
       </main>
       
       <script>
-      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwKRgyC5MtrxTGLVpRAsVx2eVidt0kF-1yDMjpmNgxltBuj6uR5Ow12wAaSlaKPBmRx/exec"; // substitua pela URL do seu Apps Script
-      
+      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwRx7FbXmv2vhkBMn0rHfERp3hSQmB2YEXWmtQrtDjq0KWriAAER4JZfcmq23duwD2ILQ/exec"; 
       async function carregarConteudo() {
         const container = document.getElementById('conteudo');
-        container.innerHTML = "<p>Carregando conteúdo...</p>";
-      
         try {
           const res = await fetch(SCRIPT_URL);
           const dados = await res.json();
