@@ -22,21 +22,61 @@
     </header>
 
     <!-- Conteúdo principal -->
-    <main>
-        <h1>Bem-vindo à Banca de Morangos do Amor</h1>
-        <p>Encontre o morango ideal para saciar sua fome de doces.</p>
+   <main>
+  <h1>Bem-vindo à Locadora de Veículos</h1>
+  <p>Encontre o carro ideal para sua viagem, trabalho ou lazer.</p>
 
-        <div class="morango">
-            <img src=https://saboresdacidade.com/wp-content/uploads/2025/07/choko-brownie-morango-do-amor-768x1024.jpeg>
-                
-            <img src=https://static.ndmais.com.br/2025/08/para-o-confeiteiro-cada-morango-e-uma-joia-efemera-esculpida-com-delicadeza-e-transformada-em-arte-para-encantar-e-emocionar-denilsonlimasucrier-reproducao-nd-1300x731.jpg>
-                
+  <div id="conteudo" class="conteudo-scroll">
+    <p>Carregando conteúdo...</p>
+  </div>
+</main>
 
-            <img src=https://cdn.media-acidadeon.com.br/saocarlos/wp-content/uploads/sites/6/2025/07/Morango-do-Amor_2025-07-24_14-17-33-1068x1165.webp>
-                
-        </div>
-    </main>
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/SEU_ID_AQUI/exec&quot;; // substitua pela URL do seu Apps Script
+async function carregarConteudo() {
+  const container = document.getElementById('conteudo');
+  container.innerHTML = "<p>Carregando conteúdo...</p>";
 
+  try {
+    const res = await fetch(SCRIPT_URL);
+    const dados = await res.json();
+    container.innerHTML = '';
+
+    dados.forEach(item => {
+      const bloco = document.createElement('div');
+      bloco.className = 'bloco-item';
+
+      const titulo = document.createElement('h2');
+      titulo.textContent = item.Título || '';
+      bloco.appendChild(titulo);
+
+      const descricao = document.createElement('p');
+      descricao.textContent = item.Descrição || '';
+      bloco.appendChild(descricao);
+
+      if (item.Url && item.Url.startsWith('http')) {
+        if (item.Url.match(/\.(jpg|jpeg|png|gif|webp)$/i) || item.Url.includes('unsplash')) {
+          const img = document.createElement('img');
+          img.src = item.Url;
+          img.alt = item.Título || 'Imagem';
+          bloco.appendChild(img);
+        } else {
+          const link = document.createElement('a');
+          link.href = item.Url;
+          link.textContent = 'Ver mais';
+          bloco.appendChild(link);
+        }
+      }
+
+      container.appendChild(bloco);
+    });
+  } catch (err) {
+    container.innerHTML = "<p>Erro ao carregar dados: " + err.message + "</p>";
+  }
+}
+
+carregarConteudo();
+</script>
     <!-- Rodapé -->
     <footer>
         <p>&copy; 2025 Morangos IFPR - Cade u morangoh</p>
